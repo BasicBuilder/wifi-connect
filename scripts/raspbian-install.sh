@@ -5,7 +5,7 @@ set -u
 trap "exit 1" TERM
 export TOP_PID=$$
 
-: "${WFC_REPO:=balena-os/wifi-connect}"
+: "${WFC_REPO:=BasicBuilder/wifi-connect}"
 : "${WFC_INSTALL_ROOT:=/usr/local}"
 
 SCRIPT='raspbian-install.sh'
@@ -14,7 +14,7 @@ NAME='WiFi Connect Raspbian Installer'
 INSTALL_BIN_DIR="$WFC_INSTALL_ROOT/sbin"
 INSTALL_UI_DIR="$WFC_INSTALL_ROOT/share/wifi-connect/ui"
 
-RELEASE_URL="https://api.github.com/repos/$WFC_REPO/releases/45509064"
+RELEASE_URL="https://api.github.com/repos/$WFC_REPO/releases/latest"
 
 CONFIRMATION=true
 ARCH=""

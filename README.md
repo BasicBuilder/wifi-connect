@@ -1,13 +1,13 @@
-<h1 align="center"><img width="460" src="https://github.com/balena-io/wifi-connect/raw/master/docs/images/wifi-connect.png" /></h1>
+<h1 align="center"><img width="460" src="https://github.com/BasicBuilder/wifi-connect/raw/master/docs/images/wifi-connect.png" /></h1>
 
 > Easy WiFi setup for Linux devices from your mobile phone or laptop
 
 WiFi Connect is a utility for dynamically setting the WiFi configuration on a Linux device via a captive portal. WiFi credentials are specified by connecting with a mobile phone or laptop to the access point that WiFi Connect creates.
 
-[![Current Release](https://img.shields.io/github/release/balena-io/wifi-connect.svg?style=flat-square)](https://github.com/balena-io/wifi-connect/releases/latest)
+[![Current Release](https://img.shields.io/github/release/BasicBuilder/wifi-connect.svg?style=flat-square)](https://github.com/BasicBuilder/wifi-connect/releases/latest)
 [![CircleCI status](https://img.shields.io/circleci/project/github/balena-io/wifi-connect.svg?style=flat-square)](https://circleci.com/gh/balena-io/wifi-connect)
 [![License](https://img.shields.io/github/license/balena-io/wifi-connect.svg?style=flat-square)](https://github.com/balena-io/wifi-connect/blob/master/LICENSE)
-[![Issues](https://img.shields.io/github/issues/balena-io/wifi-connect.svg?style=flat-square)](https://github.com/balena-io/wifi-connect/issues)
+[![Issues](https://img.shields.io/github/issues/BasicBuilder/wifi-connect.svg?style=flat-square)](https://github.com/BasicBuilder/wifi-connect/issues)
 
 <div align="center">
   <sub>an open source :satellite: project by <a href="https://balena.io">balena.io</a></sub>
@@ -17,8 +17,8 @@ WiFi Connect is a utility for dynamically setting the WiFi configuration on a Li
 
 [**Download**][DOWNLOAD] | [**How it works**](#how-it-works) | [**Installation**](#installation) | [**Support**](#support) | [**Roadmap**][MILESTONES]
 
-[DOWNLOAD]: https://github.com/balena-io/wifi-connect/releases/latest
-[MILESTONES]: https://github.com/balena-io/wifi-connect/milestones
+[DOWNLOAD]: https://github.com/BasicBuilder/wifi-connect/releases/latest
+[MILESTONES]: https://github.com/BasicBuilder/wifi-connect/milestones
 
 ![How it works](./docs/images/how-it-works.png?raw=true)
 
@@ -66,7 +66,7 @@ WiFi Connect depends on NetworkManager, but by default Raspbian Stretch uses dhc
 
 Run the following in your terminal, then follow the onscreen instructions:
 
-`bash <(curl -L https://github.com/balena-io/wifi-connect/raw/master/scripts/raspbian-install.sh)`
+`bash <(curl -L https://github.com/BasicBuilder/wifi-connect/raw/master/scripts/raspbian-install.sh)`
 
 ### balenaOS
 
@@ -131,7 +131,7 @@ WiFi Connect is expected to work with all balena.io [supported boards](https://w
 Support
 -------
 
-If you're having any problem, please [raise an issue](https://github.com/balena-io/wifi-connect/issues/new) on GitHub or [contact us](https://balena.io/community/), and the balena.io team will be happy to help.
+If you're having any problem, please [raise an issue](https://github.com/BasicBuilder/wifi-connect/issues/new) on GitHub or [contact us](https://balena.io/community/), and the balena.io team will be happy to help.
 
 ***
 
