@@ -17,6 +17,7 @@ INSTALL_UI_DIR="$WFC_INSTALL_ROOT/share/wifi-connect/ui"
 RELEASE_URL="https://api.github.com/repos/$WFC_REPO/releases/45509064"
 
 CONFIRMATION=true
+ARCH=""
 
 usage() {
     cat 1>&2 <<EOF
@@ -52,14 +53,32 @@ main() {
     need_cmd apt-get
     need_cmd grep
     need_cmd mktemp
+    need_cmd uname
 
     check_os_version
+    detect_architecture
 
     install_wfc
 
     activate_network_manager
 
     say "Run 'wifi-connect --help' for available options"
+}
+
+detect_architecture() {
+    local _arch=$(uname -m)
+    
+    if [ "$_arch" = "aarch64" ]; then
+        # Running on 64-bit ARM
+        ARCH="aarch64"
+        say "Detected 64-bit ARM architecture"
+    elif [ "$_arch" = "armv7l" ] || [ "$_arch" = "armhf" ]; then
+        # Running on 32-bit ARM
+        ARCH="armv7"
+        say "Detected 32-bit ARM architecture"
+    else
+        err "Unsupported architecture: $_arch"
+    fi
 }
 
 check_os_version() {
@@ -159,14 +178,32 @@ confirm_installation() {
 }
 
 install_wfc() {
-    local _regex='browser_download_url": "\K.*rpi\.tar\.gz'
+    local _arch_regex
     local _arch_url
     local _wfc_version
     local _download_dir
 
     say "Retrieving latest release from $RELEASE_URL..."
 
-    _arch_url=$(ensure curl "$RELEASE_URL" -s | grep -hoP "$_regex")
+    if [ "$ARCH" = "aarch64" ]; then
+        _arch_regex='browser_download_url": "\K.*aarch64.*\.tar\.gz'
+    else
+        _arch_regex='browser_download_url": "\K.*rpi\.tar\.gz'
+    fi
+
+    _arch_url=$(ensure curl "$RELEASE_URL" -s | grep -hoP "$_arch_regex")
+
+    if [ -z "$_arch_url" ]; then
+        if [ "$ARCH" = "aarch64" ]; then
+            say "No aarch64 binary found, falling back to armv7 binary"
+            _arch_regex='browser_download_url": "\K.*rpi\.tar\.gz'
+            _arch_url=$(ensure curl "$RELEASE_URL" -s | grep -hoP "$_arch_regex")
+        fi
+    fi
+
+    if [ -z "$_arch_url" ]; then
+        err "Could not find a compatible binary"
+    fi
 
     say "Downloading and extracting $_arch_url..."
 

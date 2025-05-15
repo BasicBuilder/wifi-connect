@@ -114,14 +114,14 @@ Dongle                                     | Chip
 
 It has also been successfully tested with the onboard WiFi on a Raspberry Pi 3.
 
+WiFi Connect supports both 32-bit and 64-bit Raspberry Pi OS.
+
 Given these results, it is probable that most dongles with *Atheros* or *Ralink* chipsets will work.
 
 The following dongles are known **not** to work (as the driver is not friendly with access point mode or NetworkManager):
-
 * Official Raspberry Pi dongle (BCM43143 chip)
 * Addon NWU276 (Mediatek MT7601 chip)
 * Edimax (Realtek RTL8188CUS chip)
-
 Dongles with similar chipsets will probably not work.
 
 WiFi Connect is expected to work with all balena.io [supported boards](https://www.balena.io/docs/reference/hardware/devices/) as long as they have the [compatible dongles](https://www.balena.io/docs/reference/hardware/wifi-dongles/).
